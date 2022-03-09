@@ -1,7 +1,7 @@
-const RollTracker = () => {
+const RollTracker = (props) => {
     return ( 
         <div className="status-card">
-            <h3 className="status">Rolls: 0</h3>
+            <h3 className="status">Rolls: {props.rolls}</h3>
         </div>
      );
 }

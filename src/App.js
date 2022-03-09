@@ -11,6 +11,7 @@ function App() {
 
   const [dice, setDice] = React.useState(allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
+  const [rolls, setRolls] = React.useState(0)
 
   React.useEffect(() => {
    const allHeld = dice.every(die => die.isHeld)
@@ -50,6 +51,7 @@ function App() {
   const diceElements = dice.map(die => <Die id={die.id} holdDice={() => holdDice(die.id)} isHeld={die.isHeld} value={die.value}/>)
 
   function rollDice(){
+    setRolls(prevRoll => prevRoll + 1)
     setDice(prevDice => prevDice.map(die => {
       return die.isHeld ? die : generateNewDie() 
     }))
@@ -58,6 +60,7 @@ function App() {
   function newGame(){
     setTenzies(false)
     setDice(allNewDice())
+    setRolls(0)
   }
 
   return (
@@ -72,7 +75,7 @@ function App() {
        {tenzies ? <button onClick={newGame} className="roll-btn">New Game</button> : <button className="roll-btn" onClick={rollDice}>Roll</button>}
      </main>
      <div className="status-container">
-       <RollTracker/>
+       <RollTracker rolls={rolls}/>
        <Timer/>
        <BestTime/>
      </div>
