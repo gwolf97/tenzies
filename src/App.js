@@ -42,6 +42,7 @@ function App() {
       return die.id === id ? {...die, isHeld:!die.isHeld} : die
     }))
   }
+
   
   const diceElements = dice.map(die => <Die id={die.id} holdDice={() => holdDice(die.id)} isHeld={die.isHeld} value={die.value}/>)
 

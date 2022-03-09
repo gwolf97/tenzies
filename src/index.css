@@ -82,3 +82,45 @@ main {
 .roll-btn:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
+
+.pip {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+}
+
+.real-die {
+  box-shadow: 6px 2px 2px rgba(0, 0, 0, 0.25);
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  padding: 5px 5px;
+  grid-template-areas:
+    "a . c"
+    "e g f"
+    "d . b";
+}
+
+.pip:nth-child(2) {
+  grid-area: b;
+}
+.pip:nth-child(3) {
+  grid-area: c;
+}
+.pip:nth-child(4) {
+  grid-area: d;
+}
+.pip:nth-child(5) {
+  grid-area: e;
+}
+.pip:nth-child(6) {
+  grid-area: f;
+}
+.pip:nth-child(odd):last-child {
+  grid-area: g;
+}
