@@ -73,6 +73,9 @@ function App() {
     setTenzies(false)
     setDice(allNewDice())
     setRolls(0)
+    setSeconds(0)
+    setMinutes(0)
+    setWinTime(0)
   }
 
   return (
