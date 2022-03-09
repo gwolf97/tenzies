@@ -3,6 +3,9 @@ import './App.css';
 import Die from './components/Die';
 import {nanoid} from 'nanoid'
 import Confetti from 'react-confetti'
+import RollTracker from './components/RollTracker';
+import Timer from './components/Timer';
+import BestTime from './components/BestTime';
 
 function App() {
 
@@ -58,6 +61,7 @@ function App() {
   }
 
   return (
+    <>
      <main>
        {tenzies && <Confetti/>}
        <h1 className="title">Tenzies</h1>
@@ -67,6 +71,12 @@ function App() {
        </div>
        {tenzies ? <button onClick={newGame} className="roll-btn">New Game</button> : <button className="roll-btn" onClick={rollDice}>Roll</button>}
      </main>
+     <div className="status-container">
+       <RollTracker/>
+       <Timer/>
+       <BestTime/>
+     </div>
+     </>
   );
 }
 
