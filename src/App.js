@@ -29,11 +29,12 @@ function App() {
   }, [dice])
 
   React.useEffect(() => {
-    seconds > -1 && setTimeout(() => setSeconds(seconds + 1), 1000);
+    const timer = seconds > -1 && setTimeout(() => setSeconds(seconds + 1), 1000);
     if(seconds === 60){
       setMinutes(prevMin => prevMin + 1)
       setSeconds(0)
     }
+    tenzies && clearTimeout(timer)
   }, [seconds]);
 
 
@@ -75,7 +76,6 @@ function App() {
     setRolls(0)
     setSeconds(0)
     setMinutes(0)
-    setWinTime(0)
   }
 
   return (
