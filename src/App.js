@@ -12,6 +12,10 @@ function App() {
   const [dice, setDice] = React.useState(allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
   const [rolls, setRolls] = React.useState(0)
+  const [seconds, setSeconds] = React.useState(0)
+  const [minutes, setMinutes] = React.useState(0)
+  const [winTime, setWinTime] = React.useState("")
+  
 
   React.useEffect(() => {
    const allHeld = dice.every(die => die.isHeld)
@@ -20,9 +24,17 @@ function App() {
    if(allHeld && allSameValue){
      setTenzies(true)
      console.log("you won!")
-    
+    setWinTime(`${minutes}:${seconds < 10 ? 0 : ""}${seconds}`)
    }
   }, [dice])
+
+  React.useEffect(() => {
+    seconds > -1 && setTimeout(() => setSeconds(seconds + 1), 1000);
+    if(seconds === 60){
+      setMinutes(prevMin => prevMin + 1)
+      setSeconds(0)
+    }
+  }, [seconds]);
 
 
   function allNewDice() {
@@ -76,7 +88,7 @@ function App() {
      </main>
      <div className="status-container">
        <RollTracker rolls={rolls}/>
-       <Timer/>
+       <Timer minutes={minutes} seconds={seconds} winTime={winTime} tenzies={tenzies}/>
        <BestTime/>
      </div>
      </>
