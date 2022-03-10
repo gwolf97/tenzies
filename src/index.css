@@ -26,7 +26,7 @@ main {
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  margin-bottom: 20px;
+  margin: 0 auto 20px auto;
 }
 
 .title {
@@ -130,6 +130,7 @@ main {
   display: flex;
   max-width: 800px;
   justify-content: space-between;
+  margin: 0 auto;
 }
 
 .status-card {
