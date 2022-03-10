@@ -33,7 +33,7 @@ function App() {
     if(winTime.minutes <= bestTime.minutes && winTime.seconds < bestTime.seconds){
       setTimeout(() => setBestTime({
         minutes: winTime.minutes,
-        seconds: winTime.seconds
+        seconds: winTime.seconds + 1
       }), 1000)
     }
    }
@@ -42,11 +42,12 @@ function App() {
 
   React.useEffect(() => {
     const timer = seconds > -1 && setTimeout(() => setSeconds(seconds + 1), 1000);
+    tenzies && clearTimeout(timer)
     if(seconds === 60){
       setMinutes(prevMin => prevMin + 1)
       setSeconds(0)
     }
-    tenzies && clearTimeout(timer)
+    
     setWinTime({
       minutes: minutes,
       seconds: seconds
