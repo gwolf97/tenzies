@@ -19,9 +19,20 @@ function App() {
     seconds: minutes
   })
   const [bestTime, setBestTime] = React.useState({
-    minutes: 99,
-    seconds: 99
-  })
+      minutes: 99,
+      seconds: 99
+    })
+
+  React.useEffect(() => {
+    const data = localStorage.getItem("best-time")
+    if (data){
+      setBestTime(JSON.parse(data))
+    }
+  }, [])
+
+  React.useEffect(() => {
+  localStorage.setItem("best-time", JSON.stringify(bestTime));
+  }, [bestTime]);
 
   React.useEffect(() => {
    const allHeld = dice.every(die => die.isHeld)
